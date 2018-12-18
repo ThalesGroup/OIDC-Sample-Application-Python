@@ -17,7 +17,7 @@ app.config.update({
      'OIDC_ID_TOKEN_COOKIE_SECURE': False,
      'OIDC_REQUIRE_VERIFIED_EMAIL': False,
      'OIDC_USER_INFO_ENABLED': True,
-     'OIDC_OPENID_REALM': '8K74HMZZ9R-STA',
+     'OIDC_OPENID_REALM': '{RealmName}',
      'OIDC_SCOPES': ['openid', 'email', 'profile'],
      'OIDC_INTROSPECTION_AUTH_METHOD': 'client_secret_post'
 })
@@ -85,7 +85,7 @@ def logout_idp(refresh_token,  **kwargs):
                    timeout=60,
                    verify=False)
      except:
-         print ("Something went wrong in LOgout. Please contact Author of the App")
+         print ("Something went wrong in Logout. Please contact Author of the App")
 
 if __name__ == '__main__':
     app.run()
