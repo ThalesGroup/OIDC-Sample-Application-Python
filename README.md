@@ -40,7 +40,7 @@ This sample code will help customer's integrating their third party solution wit
 
 # How To Run
 1. Navigate to ..OIDC-Sample-Application-Python/OIDCSampleApplicationPython via python cmd
-2. python app.py
+2. Type -->  python app.py
 3. Application will Start running at some localhost port Ex: http://127.0.0.1:5000/
 4. Copy the Url and Open it in Browser to Authenticate
 
