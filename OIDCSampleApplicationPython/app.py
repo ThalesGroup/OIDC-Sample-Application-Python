@@ -6,18 +6,19 @@ from flask_oidc import OpenIDConnect, request
 import webbrowser
 import requests
 from urllib.parse import urljoin
+import constant
 
 logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 app.config.update({
-     'SECRET_KEY': '{ClientSecret}',
+     'SECRET_KEY': 'd3812c94-01b4-4c55-a746-44688a087664',
      'Debug':True,
      'OIDC_CLIENT_SECRETS': 'client_secrets.json',
      'OIDC_ID_TOKEN_COOKIE_SECURE': False,
      'OIDC_REQUIRE_VERIFIED_EMAIL': False,
      'OIDC_USER_INFO_ENABLED': True,
-     'OIDC_OPENID_REALM': '{RealmName}',
+     'OIDC_OPENID_REALM': '8K74HMZZ9R-STA',
      'OIDC_SCOPES': ['openid', 'email', 'profile'],
      'OIDC_INTROSPECTION_AUTH_METHOD': 'client_secret_post'
 })
@@ -27,15 +28,15 @@ oidc = OpenIDConnect(app)
 @app.route('/', methods=['GET', 'POST'])
 def startup_login_oidc():
     if oidc.user_loggedin:
-                return render_template('loginpagetemplate.html')
+                return render_template(constant.templateName)
     else:
-        return oidc.redirect_to_auth_server("http://127.0.0.1:5000")
+        return oidc.redirect_to_auth_server(constant.localServerName)
 
 @app.route('/login', methods=['GET', 'POST'])
 @oidc.require_login
 def login_oidc():
 
-    info = oidc.user_getinfo(['preferred_username', 'email', 'sub'])
+    info = oidc.user_getinfo(constant.userInfo)
 
     user_id = info.get('sub')
 
@@ -51,11 +52,11 @@ def login_oidc():
         except:
              print ("Something went wrong. Please contact Author of the App")
 
-    return render_template('loginpagetemplate.html')
+    return render_template(constant.templateName)
 
 @app.route('/Logout', methods=['GET', 'POST'])
 def logout():
-    info = oidc.user_getinfo(['preferred_username', 'email', 'sub'])
+    info = oidc.user_getinfo(constant.userInfo)
 
     user_id = info.get('sub')
 
@@ -68,22 +69,21 @@ def logout():
    
     oidc.logout()
     logout_idp(refresh_token)  
-    return oidc.redirect_to_auth_server("http://127.0.0.1:5000")
+    return oidc.redirect_to_auth_server(constant.localServerName)
 
 def logout_idp(refresh_token,  **kwargs):
-     print ("Inside Logout")
      clientConfig = oidc.client_secrets
      path = {"realm-name": clientConfig["realm_name"]}
      data = {"client_id": clientConfig["client_id"], "refresh_token": refresh_token, "client_secret": clientConfig["client_secret"]}
      URL_LOGOUT = "realms/{realm-name}/protocol/openid-connect/logout"
      
      try:
-          requests.post(urljoin(clientConfig["base_url"], URL_LOGOUT.format(**path)),
+          info = requests.post(urljoin(clientConfig["base_url"], URL_LOGOUT.format(**path)),
                    params=kwargs,
                    data=data,
                    headers={},
                    timeout=60,
-                   verify=False)
+                   verify=True)
      except:
          print ("Something went wrong in Logout. Please contact Author of the App")
 
