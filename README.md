@@ -10,7 +10,7 @@ This sample code will help customer's integrating their third party solution wit
 1. open ../OIDCSampleApplicationPython/client_secrets.json in the text Editor
 2. Configure ClientId, ClientSecret, Authority and other info
 3. Ex: 
-			 {
+4. 			 {
         "issuer": "https://{IDP hostname}/auth/realms/{RealmName}",
         "auth_uri": "https://{IDP hostname}/auth/realms/{RealmName}/protocol/openid-connect/auth",
         "client_id": "{ClientId}",
@@ -24,8 +24,8 @@ This sample code will help customer's integrating their third party solution wit
 4. Ex for "Authority": "http://100.123.12.11/auth/realms/MyOIDCRealm"
 5. open ../OIDCSampleApplicationPython/app.py in the text Editor
 6. Configure ClientSecret and Realm name in app setting
-EX: 
-app.config.update({
+7. EX: 
+8. app.config.update({
      'SECRET_KEY': '{ClientSecret}',
      'Debug':True,
      'OIDC_CLIENT_SECRETS': 'client_secrets.json',
