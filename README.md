@@ -5,6 +5,7 @@ This sample code will help customer's integrating their third party solution wit
 1. Python 3.7.0
 2. A text editor or code editor of your choice.
 3. You already created a Application in your Identity Provider(IDP) and have ClientId, ClientSecret, Authority URL
+4. Install Flask package. Ex: pip install flask
 
 # Configuring the Application
 1. open ../OIDCSampleApplicationPython/client_secrets.json in the text Editor
