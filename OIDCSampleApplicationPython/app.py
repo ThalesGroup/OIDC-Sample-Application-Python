@@ -12,13 +12,13 @@ logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 app.config.update({
-     'SECRET_KEY': 'd3812c94-01b4-4c55-a746-44688a087664',
+     'SECRET_KEY': '{ClientSecret}',
      'Debug':True,
      'OIDC_CLIENT_SECRETS': 'client_secrets.json',
      'OIDC_ID_TOKEN_COOKIE_SECURE': False,
      'OIDC_REQUIRE_VERIFIED_EMAIL': False,
      'OIDC_USER_INFO_ENABLED': True,
-     'OIDC_OPENID_REALM': '8K74HMZZ9R-STA',
+     'OIDC_OPENID_REALM': '{RealmName}',
      'OIDC_SCOPES': ['openid', 'email', 'profile'],
      'OIDC_INTROSPECTION_AUTH_METHOD': 'client_secret_post'
 })
