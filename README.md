@@ -4,7 +4,7 @@ This sample code will help customer's integrating their third party solution wit
 # Prerequisites
 1. Python 3.7.0
 2. A text editor or code editor of your choice.
-3. You already created a Application in your Identity Provider(IDP) and have ClientId, ClientSecret, Authority URL
+3. You already created a Application in your Identity Provider(IDP) and have ClientId, ClientSecret, issuer URL
 4. Install Flask package. Ex: pip install flask
 5. Install requests package. Ex: pip install requests 
 
