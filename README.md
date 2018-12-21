@@ -8,7 +8,7 @@ This sample code will help customer's integrating their third party solution wit
 
 # Configuring the Application
 1. open ../OIDCSampleApplicationPython/client_secrets.json in the text Editor
-2. Configure ClientId, ClientSecret, Authority and other info
+2. Configure ClientId, ClientSecret, issuer, {IDP hostname}, {RealmName} and other info
 3. Ex: 
 4. 			 {
         "issuer": "https://{IDP hostname}/auth/realms/{RealmName}",
@@ -21,11 +21,10 @@ This sample code will help customer's integrating their third party solution wit
         "realm_name": "{RealmName}",
         "base_url": "https://{IDP hostname}/auth/"
     }
-4. Ex for "Authority": "http://100.123.12.11/auth/realms/MyOIDCRealm"
+4. Ex for "issuer": "http://100.123.12.11/auth/realms/MyOIDCRealm"
 5. open ../OIDCSampleApplicationPython/app.py in the text Editor
-6. Configure ClientSecret and Realm name in app setting
-7. EX: 
-8. app.config.update({
+6. Configure ClientSecret and Realm name in app setting  
+7. EX:  app.config.update({
      'SECRET_KEY': '{ClientSecret}',
      'Debug':True,
      'OIDC_CLIENT_SECRETS': 'client_secrets.json',
@@ -36,7 +35,7 @@ This sample code will help customer's integrating their third party solution wit
      'OIDC_SCOPES': ['openid', 'email', 'profile'],
      'OIDC_INTROSPECTION_AUTH_METHOD': 'client_secret_post'
 })
-7. Change only 'SECRET_KEY': '{ClientSecret}' and 'OIDC_OPENID_REALM': '{RealmName}',
+8. Change only 'SECRET_KEY': '{ClientSecret}' and 'OIDC_OPENID_REALM': '{RealmName}',
 
 # How To Run
 1. Navigate to ..OIDC-Sample-Application-Python/OIDCSampleApplicationPython via python cmd
@@ -47,5 +46,3 @@ This sample code will help customer's integrating their third party solution wit
 # If Client is Public
 1. If your Client is public, do not change the Client Secret.
 2. ClientSecret will be ignored for public client
-
-
